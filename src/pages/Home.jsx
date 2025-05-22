@@ -45,9 +45,9 @@ const Home = () => {
   const [searchFocused, setSearchFocused] = useState(false);
   const [bookmarkedPosts, setBookmarkedPosts] = useState([]);
   
-  // Pagination state
+  // Pagination - 3 posts per page
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(3); // Display 3 posts per page
+  const [postsPerPage] = useState(3);
 
   useEffect(() => {
     fetchPosts();
@@ -121,30 +121,26 @@ const Home = () => {
 
   const isBookmarked = (postId) => bookmarkedPosts.includes(postId);
   
-  // Get current posts for pagination
+  // Pagination logic
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
   const totalPages = Math.ceil(posts.length / postsPerPage);
   
-  // Change page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    // Scroll to top when changing pages
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
   
-  // Go to next page
   const nextPage = () => {
     if (currentPage < totalPages) {
       handlePageChange(currentPage + 1);
     }
   };
   
-  // Go to previous page
   const prevPage = () => {
     if (currentPage > 1) {
       handlePageChange(currentPage - 1);
