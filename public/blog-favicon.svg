@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="50" fill="#4285f4"/>
+  
+  <!-- Document/Page -->
+  <rect x="120" y="100" width="272" height="320" rx="20" fill="white"/>
+  
+  <!-- Text lines -->
+  <rect x="150" y="150" width="212" height="15" rx="5" fill="#e0e0e0"/>
+  <rect x="150" y="180" width="180" height="15" rx="5" fill="#e0e0e0"/>
+  <rect x="150" y="210" width="212" height="15" rx="5" fill="#e0e0e0"/>
+  <rect x="150" y="240" width="150" height="15" rx="5" fill="#e0e0e0"/>
+  
+  <!-- Title/Header -->
+  <rect x="150" y="300" width="212" height="25" rx="5" fill="#4285f4" opacity="0.7"/>
+  <rect x="150" y="340" width="180" height="25" rx="5" fill="#4285f4" opacity="0.5"/>
+  
+  <!-- Pencil -->
+  <path d="M320 80L350 50L370 70L340 100L320 80Z" fill="#ff9800"/>
+  <path d="M320 80L310 110L340 100L320 80Z" fill="#e65100"/>
+  <rect x="348" y="45" width="5" height="30" rx="2" transform="rotate(45 348 45)" fill="#ffcc80"/>
+</svg>
