@@ -18,13 +18,19 @@ I approached this project by focusing on creating a user-friendly interface with
 
 ## AI Assistance
 
-During development, I used AI tools like ChatGPT to help with:
+During development, I used AI tools like ChatGPT and Cascade to help with:
 
 - Generating component structures and boilerplate code
 - Debugging complex issues
 - Implementing animations and transitions
 - Enhancing UI/UX design elements
 - Creating consistent styling across components
+- Adding pagination functionality (3 posts per page)
+- Implementing the bookmarking system
+- Creating success message popups for registration and login
+- Improving navbar functionality and styling
+
+Cascade, an advanced AI coding assistant, was particularly helpful with implementing complex features like the pagination system and bookmarking functionality. It provided guidance on best practices and helped ensure clean, maintainable code throughout the project.
 
 AI assistance helped speed up development while maintaining high code quality and modern design standards.
 
@@ -39,7 +45,7 @@ AI assistance helped speed up development while maintaining high code quality an
 
 1. Clone the repository
    ```
-   git clone <repository-url>
+   git clone https://github.com/if-sourabhsawant/blogging-platform-frontend.git
    cd blogging-platform/frontend
    ```
 
