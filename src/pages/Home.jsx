@@ -35,7 +35,7 @@ import {
   NavigateBefore as NavigateBeforeIcon
 } from '@mui/icons-material';
 
-const Home = () => {
+const Home = ({ isAuthenticated }) => {
   const theme = useTheme();
   const searchInputRef = useRef(null);
   const [posts, setPosts] = useState([]);
@@ -111,6 +111,9 @@ const Home = () => {
   }, []);
 
   const toggleBookmark = (postId) => {
+    // Only allow bookmarking if user is authenticated
+    if (!isAuthenticated) return;
+    
     const newBookmarkedPosts = bookmarkedPosts.includes(postId)
       ? bookmarkedPosts.filter(id => id !== postId)
       : [...bookmarkedPosts, postId];
@@ -359,30 +362,34 @@ const Home = () => {
                     display: 'flex', 
                     flexDirection: 'column',
                     position: 'relative',
-                    overflow: 'visible'
+                    overflow: 'visible',
+                    minHeight: '400px', // Set minimum height for consistent card size
+                    width: '100%' // Ensure full width
                   }}
                 >
-                  <IconButton 
-                    size="small"
-                    onClick={() => toggleBookmark(post.id)}
-                    sx={{ 
-                      position: 'absolute', 
-                      top: 10, 
-                      right: 10, 
-                      zIndex: 2,
-                      bgcolor: 'background.paper',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                      transition: 'all 0.2s ease-in-out',
-                      '&:hover': {
-                        transform: 'scale(1.1)',
+                  {isAuthenticated && (
+                    <IconButton 
+                      size="small"
+                      onClick={() => toggleBookmark(post.id)}
+                      sx={{ 
+                        position: 'absolute', 
+                        top: 10, 
+                        right: 10, 
+                        zIndex: 2,
                         bgcolor: 'background.paper',
-                      }
-                    }}
-                  >
-                    {isBookmarked(post.id) ? 
-                      <BookmarkIcon color="primary" /> : 
-                      <BookmarkBorderIcon />}
-                  </IconButton>
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                        transition: 'all 0.2s ease-in-out',
+                        '&:hover': {
+                          transform: 'scale(1.1)',
+                          bgcolor: 'background.paper',
+                        }
+                      }}
+                    >
+                      {isBookmarked(post.id) ? 
+                        <BookmarkIcon color="primary" /> : 
+                        <BookmarkBorderIcon />}
+                    </IconButton>
+                  )}
                   
                   <CardContent sx={{ flexGrow: 1, pt: 3 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
