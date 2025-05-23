@@ -350,7 +350,7 @@ const Home = ({ isAuthenticated }) => {
         <>
           <Grid container spacing={3}>
             {currentPosts.map((post, index) => (
-            <Grid item xs={12} sm={6} md={4} key={post.id}>
+            <Grid item xs={12} sm={6} md={4} key={post.id} sx={{ width: '100%' }}>
               <Zoom 
                 in={true} 
                 style={{ transitionDelay: `${index * 100}ms` }}
@@ -363,8 +363,10 @@ const Home = ({ isAuthenticated }) => {
                     flexDirection: 'column',
                     position: 'relative',
                     overflow: 'visible',
-                    minHeight: '400px', // Set minimum height for consistent card size
-                    width: '100%' // Ensure full width
+                    minHeight: '280px', // Further reduced minimum height
+                    width: '100%', // Ensure full width
+                    minWidth: '100%', // Force minimum width
+                    boxSizing: 'border-box' // Include padding in width calculation
                   }}
                 >
                   {isAuthenticated && (
@@ -391,8 +393,8 @@ const Home = ({ isAuthenticated }) => {
                     </IconButton>
                   )}
                   
-                  <CardContent sx={{ flexGrow: 1, pt: 3 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                  <CardContent sx={{ flexGrow: 1, pt: 1.5, pb: 0 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 0.5 }}>
                       <Chip 
                         size="small" 
                         label={post.category || 'General'}
@@ -420,17 +422,18 @@ const Home = ({ isAuthenticated }) => {
                     <Typography 
                       variant="h6" 
                       component="h2" 
-                      gutterBottom
                       sx={{ 
                         fontWeight: 600,
                         fontSize: '1.1rem',
                         lineHeight: 1.3,
-                        height: '2.8rem',
+                        height: '2.4rem',
+                        minHeight: '2.4rem', // Further reduced height
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         display: '-webkit-box',
                         WebkitLineClamp: 2,
                         WebkitBoxOrient: 'vertical',
+                        mb: 0.5 // Reduced bottom margin
                       }}
                     >
                       {post.title}
@@ -439,35 +442,39 @@ const Home = ({ isAuthenticated }) => {
                     <Typography 
                       variant="body2" 
                       sx={{
-                        mb: 1,
+                        mb: 0.5, // Reduced bottom margin
                         color: 'primary.main',
-                        fontWeight: 500
+                        fontWeight: 500,
+                        height: '1.2rem', // Reduced height
+                        minHeight: '1.2rem'
                       }}
                     >
                       By {post.author_name || 'Anonymous'}
                     </Typography>
                     
-                    <Divider sx={{ my: 1.5 }} />
+                    <Divider sx={{ my: 0.8 }} />
                     
                     <Typography 
                       variant="body2" 
                       color="text.secondary" 
                       sx={{
-                        mt: 1.5,
+                        mt: 0.5,
+                        mb: 0.5,
                         display: '-webkit-box',
                         WebkitLineClamp: 3,
                         WebkitBoxOrient: 'vertical',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
-                        height: '4.5rem',
-                        lineHeight: 1.5
+                        height: '3rem',
+                        lineHeight: 1.2,
+                        minHeight: '3rem' // Further reduced height
                       }}
                     >
                       {stripHtml(post.content || '')}
                     </Typography>
                   </CardContent>
                   
-                  <CardActions sx={{ pt: 0, pb: 2, px: 2 }}>
+                  <CardActions sx={{ pt: 0, pb: 0.5, px: 2, mt: 0 }}>
                     <Button 
                       component={Link} 
                       to={`/post/${post.id}`} 
